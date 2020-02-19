@@ -20,6 +20,8 @@ export class AppComponent {
         Validators.required
       ])]
     });
+
+    this.load();
   }
 
   add() {
@@ -56,5 +58,10 @@ export class AppComponent {
   save() {
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
+  }
+
+  load() {
+    const data = localStorage.getItem('todos');
+    this.todos = JSON.parse(data);
   }
 }
